@@ -1,1 +1,0 @@
-The GraphQL Guide React Native app
