@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 
 import HomeScreen from './src/HomeScreen'
+import ChapterScreen from './src/ChapterScreen'
 import { screenOptions } from './src/styles'
 
 const Stack = createStackNavigator()
@@ -23,6 +24,19 @@ export default function App() {
             name="Home"
             component={HomeScreen}
             options={{ title: '📖 The GraphQL Guide' }}
+          />
+          <Stack.Screen
+            name="Chapter"
+            component={ChapterScreen}
+            options={({
+              route: {
+                params: {
+                  chapter: { number, title },
+                },
+              },
+            }) => ({
+              title: number ? `Chapter ${number}: ${title}` : title,
+            })}
           />
         </Stack.Navigator>
         <StatusBar style="light" />

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Text, FlatList, Pressable } from 'react-native'
 import { gql, useQuery } from '@apollo/client'
+import { AppLoading } from 'expo'
 
-import Loading from './Loading'
 import styles from './styles'
 
 const CHAPTERS_QUERY = gql`
@@ -15,7 +15,7 @@ const CHAPTERS_QUERY = gql`
   }
 `
 
-const ChapterItem = ({ chapter }) => {
+const ChapterItem = ({ chapter, onPress }) => {
   const { number, title } = chapter
   let header, subheader
 
@@ -27,24 +27,29 @@ const ChapterItem = ({ chapter }) => {
   }
 
   return (
-    <Pressable style={styles.item}>
+    <Pressable style={styles.item} onPress={onPress}>
       <Text style={styles.header}>{header}</Text>
       {subheader && <Text style={styles.subheader}>{subheader}</Text>}
     </Pressable>
   )
 }
 
-export default () => {
+export default ({ navigation }) => {
   const { data, loading } = useQuery(CHAPTERS_QUERY)
 
   if (loading) {
-    return <Loading />
+    return <AppLoading />
   }
 
   return (
     <FlatList
       data={data.chapters}
-      renderItem={({ item }) => <ChapterItem chapter={item} />}
+      renderItem={({ item }) => (
+        <ChapterItem
+          chapter={item}
+          onPress={() => navigation.navigate('Chapter', { chapter: item })}
+        />
+      )}
       keyExtractor={(chapter) => chapter.id.toString()}
     />
   )
