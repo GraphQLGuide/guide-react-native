@@ -18,6 +18,7 @@ const cache = new InMemoryCache()
 const client = new ApolloClient({
   uri: 'https://api.graphql.guide/graphql',
   cache,
+  defaultOptions: { watchQuery: { fetchPolicy: 'cache-and-network' } },
 })
 
 export default function App() {
