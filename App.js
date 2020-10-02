@@ -55,6 +55,7 @@ export default function App() {
               },
             }) => ({
               title: number ? `Chapter ${number}: ${title}` : title,
+              gestureResponseDistance: { horizontal: 500 },
             })}
           />
         </Stack.Navigator>
