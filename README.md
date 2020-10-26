@@ -1,13 +1,11 @@
 ## The GraphQL Guide React Native app
 
-This example app is built, tutorial-style, in the React Native chapter of [The GraphQL Guide](https://graphql.guide/).
-
 - Entry point: [App.js](https://github.com/GraphQLGuide/guide-react-native/blob/master/App.js)
 - Two screens, each with a GraphQL query:
   - [src/HomeScreen.js](https://github.com/GraphQLGuide/guide-react-native/blob/master/src/HomeScreen.js)
   - [src/ChapterScreen.js](https://github.com/GraphQLGuide/guide-react-native/blob/master/src/ChapterScreen.js)
 
-Tutorial steps:
+This example app is built, tutorial-style, in the React Native chapter of [The GraphQL Guide](https://graphql.guide/). Here are the tutorial steps:
 
 - [Starting branch: 0](https://github.com/GraphQLGuide/guide-react-native/tree/0) app skeleton
 - [Step 1: 0...1](https://github.com/GraphQLGuide/guide-react-native/compare/0...1) adding Apollo Client and first query
